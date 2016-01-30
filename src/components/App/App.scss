@@ -20,9 +20,12 @@
 html {
   color: #222;
   font-weight: 100;
-  font-size: 1em; /* ~16px; */
   font-family: $font-family-base;
-  line-height: 1.375; /* ~22px */
+}
+
+body {
+  line-height: 10px; 
+  font-size: 10px; 
 }
 
 /*
