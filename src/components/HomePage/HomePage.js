@@ -11,7 +11,14 @@ import React, { Component, PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './HomePage.scss';
 
-const PeterVijeh = [
+const peterVijeh = [
+{
+  name: 'Description',
+  content : [
+  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, iure!'
+  ],
+  visible: true
+},
   {
     name : 'Programming Languages',
     content: [
@@ -19,7 +26,8 @@ const PeterVijeh = [
       'PHP',
       'HTML',
       'CSS (SCSS)' 
-    ]
+    ], 
+    visible: false
   },
   {
     name : 'Libraries Frameworks & Tools',
@@ -38,6 +46,7 @@ const PeterVijeh = [
       'Grunt.js',
       'Gulp.js'
     ], 
+    visible: false
   },
     {
       name : 'Databases Operating Systems & Servers', 
@@ -49,9 +58,11 @@ const PeterVijeh = [
         '*nix Command Line',
         'OSX',
         'Linux Server Setup & Administration'
-      ]
+      ], 
+      visible: false
     },
-    {name : 'Projects', 
+    {
+      name : 'Projects', 
       content : [
         { description: 'Lorem ipsum dolor sit amet, consectetur.',
         url : 'http://www.google.com',
@@ -59,31 +70,68 @@ const PeterVijeh = [
         { description: 'Lorem ipsum dolor sit amet, consectetur.',
         url : 'http://www.google.com',
         repo : 'http://www.github.com'}
-      ]
+      ],
+      visible: false
     }
 ]; 
 
-const title = 'Let = ';
+const title = 'Peter Vijeh - NYC Based Web Developer';
+
+const jObject = 'Const peterVijeh = '
 
 class LevelTwoObject extends Component {
 
   render(){
 
         let jsonItems = [];
-        let comma = ','; 
+        let objLenth = this.props.item.length; 
+        let count = 0; 
+
+console.log(this.props.visible); 
 
         if (typeof this.props.item != 'undefined' ){
             this.props.item.forEach((item) =>{
-              console.log(item); 
-            jsonItems.push(<li>{comma}</li>); 
+              ++count; 
+              if (typeof item === 'string'){
+
+                jsonItems.push(<li>{item}
+                    {
+                      (()=>{
+                          if (count < objLenth) return <span>,</span>
+                      })()
+                    }
+                  </li>);     
+              
+              } else if (typeof item === 'object'){
+                
+                jsonItems.push(
+                  <li>
+                    <ul>
+                      <li><span>description : {item.description},</span></li>
+                      <li><span>url : {item.url},</span></li>
+                      <li><span>repo : {item.repo}</span></li>
+                    </ul>
+                    {
+                      (()=>{
+                          if (count < objLenth) return <span>,</span>
+                      })()
+                    }
+                  </li>
+                  );     
+              
+              }
           }); 
         }
 
     return(
           <div className={s.object}>
-            <ul className={s.objectContent}>
-              {jsonItems}
-            </ul>
+          {(()=>{
+            if (this.props.visible === true){
+              return <ul className={s.objectContent}>{jsonItems}</ul>
+          } else if (this.props.visible === false) {
+            return <span className={s.objectHidden}>...</span>
+          }
+          })()}
           </div>
       );     
   }
@@ -92,31 +140,65 @@ class LevelTwoObject extends Component {
 
 class LevelOneObject extends Component {
 
+  handleClick = event => {
+    this.props.onClick(event);
+  }; 
+
   render(){
 
         let jsonItems = [];
-        let comma = 'f'
+        let objLenth = this.props.item.length; 
+        let count = 0; 
 
-        if (typeof PeterVijeh != 'undefined' ){
+        if (typeof this.props.item != 'undefined' ){
           
-            PeterVijeh.forEach(function(item){
-            jsonItems.push(<li><b> {item.name} : </b><LevelTwoObject item={item.content} /></li>); 
+            this.props.item.forEach((item)=>{
+              ++count; 
+              console.log(count);
+            jsonItems.push(<li className={s.firstLevelListItem} key={count}><span className={s.firstLevelLabel} onClick={this.handleClick.bind(this, {item, count})}>{item.name} : </span> <LevelTwoObject item={item.content} visible={item.visible}/>{
+              (()=>{
+                  if (count < objLenth) return <span>,</span>
+              })()
+            }</li>); 
           }); 
         }
 
     return(
           <div className={s.object}>
             <ul className={s.objectContent}>
-              
               {jsonItems}
-            
-            </ul>
+              </ul>
           </div>
       ); 
   }
 }
 
 class HomePage extends Component {
+
+constructor (props) {
+    super(props)
+    this.state =  { 
+      item: peterVijeh
+    }
+  }
+
+  handleClick = event => {
+    let clickedProp = this.state.item; 
+
+    clickedProp[event.count - 1].visible = !clickedProp[event.count - 1].visible;
+
+    this.setState({
+      item : clickedProp
+    });
+
+    console.log(clickedProp[event.count].visible);
+
+    console.log(event);
+    console.log(this.state.item);
+
+
+
+  }; 
 
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired,
@@ -127,10 +209,11 @@ class HomePage extends Component {
   }
 
   render() {
+
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <h1>{title}{<LevelOneObject/>}</h1>
+          <span className={s.firstLevelLabel}>{jObject}</span>{<LevelOneObject item={this.state.item} onClick={this.handleClick}/>}
         </div>
       </div>
     );

@@ -10,13 +10,14 @@
 @import '../variables.scss';
 
 .root {
-background-color: red;
+color: rgba(255, 255, 255, 0.6);
 padding: 100x 0px;
+font-size: 2rem;
+line-height: 2rem;
 }
 
 .container {
     width: 96%;
-    background-color:blue; 
     max-width: 500px; 
     margin: 0 auto;
     padding: 5px;
@@ -24,7 +25,6 @@ padding: 100x 0px;
 
 .object{
     display:inline; 
-    background-color:blue;
     min-height: 80px;
     width:100%;
 
@@ -38,18 +38,41 @@ padding: 100x 0px;
 
    li {
     list-style-type: none;
-    line-height: 2rem; 
-    font-size: 2rem; 
+    font-weight:400;
+   }
+
+   li.firstLevelListItem{
+    margin-bottom: 1.5rem; 
+    
+
+   }
+
+   .firstLevelLabel{
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+        font-weight: 600;
+        cursor:pointer;    
+        
+        &:hover{
+        color: rgba(255, 255, 255, .9); 
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+        };
+  
+   }
+
+   li.firstLevelListItem:last-child{
+    margin-bottom: 0; 
    }
 
    ul{
-    padding: 1rem 0;
+    margin:0;
+    padding:1rem; 
    }
-
-
 
 }
 
 .objectContent {
 }
-
