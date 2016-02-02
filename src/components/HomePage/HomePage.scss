@@ -15,6 +15,11 @@ padding: 100x 0px;
 font-size: 2rem;
 line-height: 2.5rem;
 
+    @media(max-width: $screen-xs-min) {
+    font-size: 1.8rem; 
+    line-height: 2.2rem; 
+    }
+
   a{
     color: $bright-orange;
     opacity: .7;
@@ -63,6 +68,11 @@ line-height: 2.5rem;
       font-size: 8rem; 
       margin:0 0 1rem 0;
       padding:0;
+
+      @media(max-width: $screen-xs-min) {
+      font-size: 6rem; 
+      line-height: 6rem; 
+      }
     }
 
     h2{
@@ -70,11 +80,23 @@ line-height: 2.5rem;
       font-size: 4.5rem; 
       margin:0;
       padding:0;
+
+      @media(max-width: $screen-xs-min) {
+      font-size: 3rem; 
+      line-height: 3rem; 
+      }
+    
     }
 
     h3{
       line-height: 4.5rem;
       font-size:4rem;
+
+      @media(max-width: $screen-xs-min) {
+      font-size: 2.8rem; 
+      line-height: 3.0rem; 
+      }
+
     }
 
     p{
@@ -82,8 +104,13 @@ line-height: 2.5rem;
       line-height: 1.8rem;
       font-size: 1.6rem; 
       text-align: center;
-    }
 
+      @media(max-width: $screen-xs-min) {
+      font-size: 1.4rem; 
+      line-height: 1.6rem; 
+      }
+    
+    }
 
     &:before{
       font-family: FontAwesome;

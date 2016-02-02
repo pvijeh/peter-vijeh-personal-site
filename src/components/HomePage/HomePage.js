@@ -26,7 +26,6 @@ const peterVijeh = [
       'LoopBack.js',
       'StrongLoop',
       'Flux',
-      'Babel',
       'Express.js',
       'Node.js',
       'Wordpress',
@@ -68,7 +67,7 @@ const peterVijeh = [
       content : [
         { description: 'Peter Vijeh personal website',
           repo : 'https://github.com/pvijeh/peter-vijeh-personal-site',
-          technologies : 'React.js, PostCSS, JSX, JavaScript'
+          technologies : 'React.js, PostCSS, JSX, JavaScript, PM2, Ubuntu Linux, Node.js'
         },
         { description: 'Rent affordability calculator built with React.js and Reflux',
           url : 'http://movingtonewyorkguide.com/tools/how-much-rent-calculator/',
@@ -97,6 +96,12 @@ const peterVijeh = [
         technologies : 'HTML, PHP, JavaScript, jQuery, MySQL, CSS, Wordpress'
       }
       ],
+      visible: false
+    },
+    {
+      name : 'Professional Experience', 
+        content: [{ resume : 'https://s3.amazonaws.com/petervijeh-personal/peterVijeh-developerResume.pdf',
+        }],
       visible: false
     }
 ], 
@@ -131,10 +136,11 @@ class LevelTwoObject extends Component {
                   <li key={count}>
                   <div className={s.array+' '+s.object}>
                       <ul>
-                        <li>{'Description : '}<span className={s.objectStyle}>{item.description}</span>,</li>
+                        {(()=>{if (item.description) return <li>{'Description : '}<span className={s.objectStyle}>{item.description}</span>,</li>})()}
                         {(()=>{if (item.url) return <li>{'URL : '}<a href={item.url}>{'project link'}</a>,</li>})()}
-                       {(()=>{if (item.repo) return <li>{'Github Repo : '}<a href={item.repo}>{'link'}</a>,</li>})()}
-                       <li>{'Technologies : '}<span className={s.objectStyle}>{item.technologies}</span></li>
+                        {(()=>{if (item.repo) return <li>{'Github Repo : '}<a href={item.repo}>{'link'}</a>,</li>})()}
+                        {(()=>{if (item.technologies) return <li>{'Technologies : '}<span className={s.objectStyle}>{item.technologies}</span></li>})()}
+                        {(()=>{if (item.resume) return <li>{'Resume : '}<a href={item.resume}>{'download'}</a>,</li>})()}
                       </ul>
                     </div>
                       {

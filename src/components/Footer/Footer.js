@@ -18,14 +18,14 @@ class Footer extends Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <a className={s.link} href="https://github.com/pvijeh/peter-vijeh-personal-site/blob/master/src/components/HomePage/HomePage.js">{'Site built with React.js & JavaScript ES 6  - view code'}</a>
+          <a className={s.link} href="https://github.com/pvijeh/peter-vijeh-personal-site/blob/master/src/components/HomePage/HomePage.js">{'Built with isomorphic react.js - view code'}</a>
           <span className={s.spacer}>·</span>
           <a className={s.link} href="https://github.com/pvijeh/">{'GitHub'}</a>
           <span className={s.spacer}>·</span>
           <a className={s.link} href="https://www.linkedin.com/in/peter-vijeh-41168a5
 ">LinkedIn</a>
           <span className={s.spacer}>·</span>
-          <span className={s.text}>{'Hosted on AWS'}</span>
+          <span className={s.text}>{'Hosted on Digital Ocean'}</span>
         </div>
       </div>
     );
