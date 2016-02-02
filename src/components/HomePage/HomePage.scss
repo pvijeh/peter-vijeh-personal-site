@@ -10,31 +10,122 @@
 @import '../variables.scss';
 
 .root {
-color: rgba(255, 255, 255, 0.6);
+color: rgba(255, 255, 255, 0.75);
 padding: 100x 0px;
 font-size: 2rem;
-line-height: 2rem;
+line-height: 2.5rem;
+
+  a{
+    color: $bright-orange;
+    opacity: .7;
+  }
+
 }
 
-.container {
-    width: 96%;
-    max-width: 500px; 
-    margin: 0 auto;
-    padding: 5px;
+.section{
+  padding:1vh 0 5vh 0;
+  width:100%;
+
+  &:first-child{
+  background-color: $sky-blue; 
+  }
+
+  &:nth-child(2){
+  background-color: $text-editor; 
+  }
+
+  &:last-child{
+    background-color: $bright-orange;
+    padding: 0 0 0 0; 
+
+    .container:before{
+      display:none; 
+    }
+
+  }
+
 }
 
-.object{
+.container {  
+  display:table;
+  position:relative;
+  width: 96%;
+  max-width: 700px; 
+  margin: 0 auto 0 auto;
+  padding: 10vh 5px 10vh 5px;
+  min-height: 100vh;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+    h1{
+      line-height: 8rem; 
+      font-size: 8rem; 
+      margin:0 0 1rem 0;
+      padding:0;
+    }
+
+    h2{
+      line-height: 4.5rem; 
+      font-size: 4.5rem; 
+      margin:0;
+      padding:0;
+    }
+
+    h3{
+      line-height: 4.5rem;
+      font-size:4rem;
+    }
+
+    p{
+      margin-top: 10rem; 
+      line-height: 1.8rem;
+      font-size: 1.6rem; 
+      text-align: center;
+    }
+
+    &:before{
+      font-family: FontAwesome;
+      font-size: 5rem; 
+      line-height: 5rem;
+      position: absolute; 
+      opacity:0.3;
+      content: '\f107';
+      bottom: 2rem;
+      width:100%; 
+      text-align: center;
+      left:0;
+  }
+
+}
+
+.containerNarrow{
+  max-width:550px;
+}
+
+.containerInner{
+  display:table-cell;
+  vertical-align:middle;
+}
+
+.objectStyle{
+  color: $light-green; 
+}
+
+.array{
     display:inline; 
     min-height: 80px;
     width:100%;
 
    &:before{
-    content:'{';
-   };
+    content:'[';
+    color: $sky-blue;
+   }
 
    &:after{
-    content:'}';
-   }; 
+    content:']';
+    color: $sky-blue;
+   }
 
    li {
     list-style-type: none;
@@ -43,23 +134,22 @@ line-height: 2rem;
 
    li.firstLevelListItem{
     margin-bottom: 1.5rem; 
-    
 
    }
 
    .firstLevelLabel{
-        -webkit-transition: 0.3s;
-        -o-transition: 0.3s;
-        transition: 0.3s;
-        font-weight: 600;
-        cursor:pointer;    
-        
-        &:hover{
-        color: rgba(255, 255, 255, .9); 
-        -webkit-transition: 0.3s;
-        -o-transition: 0.3s;
-        transition: 0.3s;
-        };
+      -webkit-transition: 0.3s;
+      -o-transition: 0.3s;
+      transition: 0.3s;
+      font-weight: 700;
+      cursor:pointer;    
+      
+      &:hover{
+      color: rgba(255, 255, 255, .9); 
+      -webkit-transition: 0.3s;
+      -o-transition: 0.3s;
+      transition: 0.3s;
+      }
   
    }
 
@@ -71,8 +161,41 @@ line-height: 2rem;
     margin:0;
     padding:1rem; 
    }
+}
+
+.topLevelObject{
+
+  &:before{
+    content:'{';
+  }
+
+  &:after{
+    content:'};';
+  }
 
 }
 
-.objectContent {
+.object{
+  &:before{
+      content:'{';
+    }
+  &:after{
+    content:'}';
+  }  
 }
+
+.description{
+  font-weight: 700;
+}
+
+.orangeText{
+  color: $bright-orange;
+}
+
+.blueText{
+  color: $sky-blue;
+}
+
+   span.objectLabel{
+    font-weight: 700;
+   }
