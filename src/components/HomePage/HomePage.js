@@ -28,7 +28,7 @@ const peterVijeh = [
       'Flux',
       'Express.js',
       'Node.js',
-      'Wordpress',
+      'WordPress',
       'Boostrap'
     ], 
     visible: false
