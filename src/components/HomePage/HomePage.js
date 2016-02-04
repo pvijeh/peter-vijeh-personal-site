@@ -4,7 +4,6 @@ import React, { Component, PropTypes } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './HomePage.scss';
 
-
 const peterVijeh = [
   {
     name : 'Programming Languages',
@@ -81,7 +80,7 @@ const peterVijeh = [
         },
         { 
           description: 'Isomorphic React.js Local Discovery Web App (currently under development)',
-          url : 'n/a',
+          url : 'http://162.243.91.29/',
           repo : 'https://github.com/pvijeh/isomorphic-react-local-discovery',
           technologies : 'JavaScript (ES6), React.js, Express.js, Flux, PostCSS, Ubuntu Linux Server, Node.js, JSX'
         }, 
