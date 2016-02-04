@@ -10,4 +10,4 @@ PostCSS
 
 hosted on Digital Ocean Ubuntu Linux
 
-[http://www.petervijeh.com](http://www.petervijeh.com)
+[http://petervijeh.com](http://petervijeh.com)
